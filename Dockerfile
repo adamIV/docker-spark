@@ -54,7 +54,8 @@ RUN curl -sL --retry 3 \
   | gunzip \
   | tar -x -C /usr/ \
  && rm -rf $HADOOP_HOME/share/doc \
- && chown -R root:root $HADOOP_HOME
+ && chown -R root:root $HADOOP_HOME \
+ && rm -rf $HADOOP_HOME/share/hadoop/tools/lib/hadoop-kafka-*.jar $HADOOP_HOME/share/hadoop/tools/lib/kafka-clients-*.jar
 
 # SPARK
 ENV SPARK_VERSION 2.3.0
