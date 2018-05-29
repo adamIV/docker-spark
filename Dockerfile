@@ -68,7 +68,8 @@ RUN curl -sL --retry 3 \
   | gunzip \
   | tar x -C /usr/ \
  && mv /usr/$SPARK_PACKAGE $SPARK_HOME \
- && chown -R root:root $SPARK_HOME
+ && chown -R root:root $SPARK_HOME \
+ && rm -rf $SPARK_HOME/jars/hadoop-mapreduce-client-core-2.6.5.jar
 
 WORKDIR $SPARK_HOME
 CMD ["bin/spark-class", "org.apache.spark.deploy.master.Master"]
